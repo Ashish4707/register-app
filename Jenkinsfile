@@ -40,7 +40,7 @@ pipeline{
         }
         stage('SonaQube Analysis'){
             steps{
-                withSonarQubeEnv(installationName: 'SonarQubeServer' ,credentialsId: 'jenkins-sonarqube-token' , timeout: 03) {
+                withSonarQubeEnv(installationName: 'SonarQubeServer' ,credentialsId: 'jenkins-sonarqube-token') {
                     sh 'mvn sonar:sonar'
                 }
             }
