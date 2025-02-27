@@ -56,7 +56,8 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('', DOCKER_PASS){
-                        docker_image = docker.Build "${IMAGE_NAME}"  
+                        //docker_image = docker.Build "${IMAGE_NAME}"
+                        docker_image = docker.build(image: "${IMAGE_NAME}")
                     }
                     docker.withRegistry('',DOCKER_PASS){
                         docker_image.Push("${MAGE_TAG}")
