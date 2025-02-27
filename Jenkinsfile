@@ -19,6 +19,7 @@ pipeline{
         }
         stage('Build Application'){
             steps{
+                echo 'Building Application...'
                 sh'mvn clean package'
             }
         }
@@ -31,6 +32,14 @@ pipeline{
             steps{
                 withSonarQubeEnv(installationName: 'SonarQubeServer' ,credentialsId: 'jenkins-sonarqube-token') {
                     sh 'mvn sonar:sonar'
+                }
+            }
+        }
+        stage('Quality Gate'){
+            steps{
+                script{
+                    waitForQualityGate abortPipeline: false , credentialsId: 'jenkins-sonarqube-token'
+                    }
                 }
             }
         }
