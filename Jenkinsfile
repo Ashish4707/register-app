@@ -56,7 +56,7 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('', DOCKER_PASS){
-                        def docker_image = docker.Build"${IMAGE_NAME}"
+                        def docker_image = docker.build("${IMAGE_NAME}:${IMAGE_TAG}", ".")
                         docker_image.Push("${IMAGE_TAG}")
                         docker_image.Push("latest")
                     }
