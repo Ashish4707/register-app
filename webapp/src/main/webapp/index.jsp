@@ -33,6 +33,6 @@
 
    <h1> Thank You </h1>
    <br>
-   <h1> Happy Learning. Get well Soon </h1>
+   <h1> Happy Learning. KodeKloud </h1>
    
 </form>
